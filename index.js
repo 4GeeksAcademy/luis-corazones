@@ -26,30 +26,19 @@ const asciiHeart = [
     "⠀      ⠙⠻⠁"
 ];
 
-const animateByChart = (ms) => {
-    let currentLine = 0;
-    let currentChar = 0;
+const animateByLine = (ms) => {
+    let i = 0;
 
-    const printNextChar = () => {
-        if (currentLine < asciiHeart.length) {
-            const line = asciiHeart[currentLine]; // Obtiene la línea actual como string
+    const primeraLinea = () => {
+        if (i < asciiHeart.length) {
+            console.log(asciiHeart[i]); 
+            i++;
 
-            if (currentChar < line.length) {
-                process.stdout.write(line[currentChar]); // Imprime el siguiente carácter sin salto de línea
-                currentChar++;
-            } else {
-                process.stdout.write('\n'); // Salto de línea al terminar la línea actual
-                currentLine++;
-                currentChar = 0;
-            }
-
-            setTimeout(printNextChar, ms); // Llama a sí misma después de 'ms'
+            setTimeout(primeraLinea, ms); 
         }
     };
 
-    printNextChar(); // Inicia la animación
+    primeraLinea(); 
 };
 
-animateByChart(100); // Llama a la función con 100ms de retraso por carácter
-
-
+animateByLine(500); 
